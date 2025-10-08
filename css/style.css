@@ -1,0 +1,355 @@
+/* =========================
+   VARIÁVEIS E RESET
+   ========================= */
+:root{
+  --bg: #0c0c0c;
+  --panel: #1c1c1c;
+  --header: #1a1a1a;
+  --accent: #f1c40f;
+  --accent-dark: #e0a000;
+  --muted: #333;
+  --text: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* =========================
+   LAYOUT CONTAINER
+   ========================= */
+.container {
+  width: 70%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px; /* evita encostar nas laterais em telas pequenas */
+}
+
+/* =========================
+   CABEÇALHO / MENU
+   ========================= */
+header {
+  background: var(--header);
+  border-bottom: 2px solid var(--accent);
+  padding: 10px 0;
+}
+
+#menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* logo */
+.logo img {
+  width: 100px;
+  height: auto;
+  display: block;
+}
+
+/* nav desktop */
+nav { margin-left: auto; }
+nav .nav-list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* nav itens */
+nav .nav-list li { margin: 0; }
+nav .nav-list li a {
+  display: inline-block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+  border-radius: 8px;
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+nav .nav-list li a:hover {
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MENU HAMBURGUER (mobile)
+   ========================= */
+/* esconder checkbox visualmente, mas deixar acessível */
+#menu-toggle {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* label que desenha as 3 barras */
+.menu-icon {
+  display: none; /* visible on mobile only via media queries */
+  margin-left: auto;
+  width: 44px;
+  height: 36px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 3 barras */
+.menu-icon span {
+  display: block;
+  height: 3px;
+  width: 26px;
+  margin: 6px auto;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+/* transformações quando o checkbox estiver checked -> ícone vira X */
+#menu-toggle:checked + .menu-icon span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+#menu-toggle:checked + .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:checked + .menu-icon span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* =========================
+   MAIN / BANNER / CARDS
+   ========================= */
+main { padding: 24px 0 40px; }
+
+#banner {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(241,196,15,0.18);
+  object-fit: cover;
+}
+
+/* welcome section - grid / flex */
+.welcome {
+  display: flex;
+  gap: 24px;
+  margin: 5vh 0;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+/* cada card */
+.welcome-item {
+  background: var(--panel);
+  border: 2px solid var(--muted);
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1 1 30%;
+  min-width: 260px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  text-align: left;
+}
+
+.welcome-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.welcome-item h2 {
+  color: var(--accent);
+  margin: 0 0 12px;
+  font-size: 1.25rem; /* ajustável */
+  text-align: center;
+}
+
+/* imagens internas */
+.img-item {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* parágrafos (limitar tamanho p/ não ficar gigante no mobile) */
+.welcome-item p {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  text-transform: none; /* mantém o conteúdo como está - mas com tamanho legível */
+}
+
+/* botão "leia-mais" controlado para não esticar demais no mobile */
+.leia-mais {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transition: transform .18s, box-shadow .18s, background .18s;
+  width: auto;
+  max-width: 340px;
+}
+.leia-mais:hover {
+  transform: translateY(-3px);
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+/* =========================
+   RODAPÉ
+   ========================= */
+footer {
+  background: var(--header);
+  border-top: 2px solid var(--accent);
+  padding: 18px 0;
+}
+
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 6vw;
+  max-width: 80px;
+  height: auto;
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
+.footer-text {
+  color: var(--accent);
+  font-weight: 300;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+/* telas médias e menores */
+@media (max-width: 992px) {
+  .container { width: 90%; }
+  .welcome { gap: 18px; }
+  .welcome-item { padding: 18px; }
+  .img-item { height: 150px; }
+}
+
+/* mobile: ajustar menu e layout empilhado */
+@media (max-width: 768px) {
+  /* mostra o ícone */
+  .menu-icon { display: block; }
+
+  /* nav -> escondido por padrão, reveal via max-height */
+  nav { margin-left: 0; }
+  nav .nav-list {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    background: #0f0f0f;
+    margin-top: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 0; /* começa fechado */
+    opacity: 0;
+    transition: max-height 0.36s ease, opacity 0.36s ease;
+  }
+
+  /* quando checkbox está marcado, abre o menu */
+  #menu-toggle:checked ~ nav .nav-list {
+    max-height: 420px; /* suficiente p/ várias opções */
+    opacity: 1;
+    padding: 8px 0 12px;
+  }
+
+  nav .nav-list li a {
+    padding: 12px 14px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 1rem;
+  }
+
+  /* ajuste do header: empilhar logo e menu */
+  #menu {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .logo img { width: 86px; }
+
+  /* conteúdo empilha e cards ficam 100% */
+  .welcome {
+    flex-direction: column;
+    align-items: center;
+    margin: 4vh 0;
+  }
+  .welcome-item {
+    width: 100%;
+    min-width: 0;
+    max-width: 760px;
+  }
+
+  /* banner + bordas menores */
+  #banner {
+    border-radius: 12px;
+  }
+
+  /* botão: limitar máximo e centralizar */
+  .leia-mais {
+    margin: 18px auto 0;
+    max-width: 300px;
+  }
+
+  /* rodapé: empilha */
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-logo { width: 22vw; max-width: 110px; margin-bottom: 8px; }
+}
+
+/* celulares pequenos */
+@media (max-width: 480px) {
+  body { font-size: 15px; }
+
+  .welcome-item h2 { font-size: 1.05rem; }
+  .welcome-item p { font-size: 0.98rem; }
+
+  .img-item { height: 140px; }
+
+  .leia-mais {
+    padding: 10px 18px;
+    max-width: 260px;
+  }
+
+  .menu-icon { width: 46px; height: 38px; }
+  .menu-icon span { width: 24px; height: 3px; }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="img/batman icone.png" type="image/x-icon" />
+  <title>BAT.SITE</title>
+</head>
+
+<body>
+  <header>
+    <div id="menu" class="container">
+      <div class="logo">
+        <img src="img/logotipo do batman.png" alt="logotipo do batman" title="Batman" />
+      </div>
+
+      <!-- checkbox toggle (acessível) -->
+      <input type="checkbox" id="menu-toggle" aria-label="Abrir menu" />
+
+      <!-- ícone hamburguer (três barras) -->
+      <label for="menu-toggle" class="menu-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Empresa</a></li>
+          <li><a href="#">Serviços</a></li>
+          <li><a href="https://www.shutterstock.com/pt/search/batman" target="_blank" rel="noopener">Galeria</a></li>
+          <li><a href="#">Contatos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <img src="img/banner do batmam 2.png" alt="banner batman" id="banner" />
+
+      <section class="welcome">
+        <div class="welcome-item">
+          <h2>ENTRE EM GOTHAM, SE TIVER CORAGEM</h2>
+          <img src="img/gotham.png" alt="Panorama de Gotham City à noite" class="img-item" />
+          <p>
+            GOTHAM NÃO É PARA QUALQUER UM... MAS SE VOCÊ CHEGOU ATÉ AQUI,
+            TALVEZ TENHA O QUE É PRECISO. PREPARE-SE PARA NOITES LONGAS,
+            DESAFIOS SOMBRIOS E UM AMBIENTE CHEIO DE APRENDIZADO E CORAGEM.
+            CONTE COM O BATMAN NESSA NOVA JORNADA!
+          </p>
+          <a class="leia-mais" href="https://store.steampowered.com/app/200260/Batman_Arkham_City_GOTY/" target="_blank" rel="noopener">🦇 ENTRAR NA ZONA</a>
+        </div>
+
+        <div class="welcome-item">
+          <h2>JUNTE-SE AOS ALIADOS DA NOITE</h2>
+          <img src="img/a escuridão de gotham .png" alt="Cidade de Gotham em clima sombrio" class="img-item" />
+          <p>
+            A ESCURIDÃO DE GOTHAM DÁ AS BOAS-VINDAS! ESPERAMOS QUE VOCÊ 
+            ENCONTRE AQUI NÃO SÓ ACOLHIMENTO, MAS TAMBÉM FORÇA PARA CRESCER,
+            APRENDER E LUTAR PELO QUE ACREDITA. JUNTOS, SEREMOS MAIS DO QUE
+            SOMBRAS... SEREMOS ALIADOS.
+          </p>
+          <a class="leia-mais" href="https://www.dc.com/characters/batman" target="_blank" rel="noopener">🦇 EU NÃO TENHO MEDO</a>
+        </div>
+
+        <div class="welcome-item">
+          <h2>FAÇA PARTE DA BAT-FAMÍLIA</h2>
+          <img src="img/familia bat.png" alt="Prédios de Gotham envoltos em névoa" class="img-item" />
+          <p>
+            VOCÊ ACABA DE ENTRAR PARA A NOSSA BAT-FAMÍLIA! ESTE É UM ESPAÇO 
+            PARA APRENDER, EVOLUIR E COLABORAR – COMO VERDADEIROS VIGILANTES 
+            DO CONHECIMENTO. SEMPRE ESTAREMOS À DISPOSIÇÃO, COMO O ALFRED
+            ESTÁ PARA O BATMAN.
+          </p>
+          <a class="leia-mais" href="https://batmanarkham.fandom.com/wiki/Arkham_City" target="_blank" rel="noopener">🦇 DESAFIAR O DESTINO</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <img src="img/logotipo do batman.png" alt="logo batman" class="footer-logo" />
+      </div>
+      <p class="footer-text">DESENVOLVEDOR: JOSÉ CARLOS</p>
+    </div>
+  </footer>
+
+  <!-- Pequeno script para fechar o menu após clicar em uma opção (útil no mobile) -->
+  <script>
+    (function () {
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.querySelectorAll('.nav-list a');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          // fecha o menu se estiver aberto (UX melhor em mobile)
+          if (menuToggle.checked) menuToggle.checked = false;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
